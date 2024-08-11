@@ -7,17 +7,95 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Test {
-  id             Int    @id @default(autoincrement())
-  name           String @db.VarChar(100)
-  student_number Int
-  school         String @db.VarChar(100)
-  professional   String @db.VarChar(100)
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview {
+  id          String  @id
+  name        String? @db.VarChar(20)
+  description String? @db.VarChar(40)
 }
 
-model userinfo {
-  id       String  @id @db.Uuid
-  account  String? @db.VarChar(20)
-  password String? @db.VarChar(255)
-  nickname String? @db.VarChar(255)
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview_process {
+  interview_id String
+  id           String  @id
+  name         String? @db.VarChar(20)
+  description  String? @db.VarChar(40)
+  type         String? @db.VarChar(10)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview_process_session {
+  process_id  String
+  session     Int       @db.SmallInt
+  name        String?   @db.VarChar(20)
+  description String?   @db.VarChar(40)
+  time        DateTime? @db.Timestamp(6)
+  place       String?   @db.VarChar(40)
+  limiters    String?   @db.VarChar(40)
+
+  @@id([process_id, session])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview_process_tracking {
+  interview_id    String
+  stu_id          String  @db.VarChar(20)
+  current_process String?
+  current_session Int?    @db.SmallInt
+  process_status  Int?    @db.SmallInt
+  is_employ       Int?    @db.SmallInt
+  employ_result   String? @db.VarChar(20)
+
+  @@id([interview_id, stu_id])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview_rater_rule {
+  process_id      String
+  session         Int     @db.SmallInt
+  rating_position Int     @db.SmallInt
+  limiters        String? @db.VarChar(40)
+
+  @@id([process_id, session, rating_position])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview_record {
+  process_id String
+  session    Int     @db.SmallInt
+  stu_id     String  @db.VarChar(20)
+  url        String? @db.VarChar(255)
+
+  @@id([process_id, session, stu_id])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview_score {
+  process_id String
+  session    Int     @db.SmallInt
+  stu_id     String  @db.VarChar(20)
+  rater      String  @db.VarChar(20)
+  score      Int?    @db.SmallInt
+  comment    String? @db.VarChar(255)
+
+  @@id([process_id, session, stu_id, rater])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model interview_user {
+  interview_id String
+  stu_id       String  @db.VarChar(20)
+  name         String  @db.VarChar(20)
+  gender       Int?    @db.SmallInt
+  college      String? @db.VarChar(20)
+  major        String? @db.VarChar(20)
+  grade        String? @db.VarChar(4)
+  class        String? @db.VarChar(2)
+  phone        String? @db.VarChar(11)
+  email        String? @db.VarChar(40)
+  qq           String? @db.VarChar(10)
+  wechat       String? @db.VarChar(40)
+  avatar       String? @db.VarChar(255)
+
+  @@id([interview_id, stu_id])
 }
