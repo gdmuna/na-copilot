@@ -1,4 +1,4 @@
-// File: E:\NA\社团管理系统\gavintest\src\app\layout.js
+// File: D:\Code\na-copilot\src\app\layout.js
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
