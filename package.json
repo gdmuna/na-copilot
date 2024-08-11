@@ -1,0 +1,81 @@
+{
+    "name": "na-copilot",
+    "version": "0.0.1",
+    "description": "社团内部管理与辅助决策系统",
+    "license": "GPL-3.0-only",
+    "author": {
+        "name": "Seele.Clover",
+        "email": "37256067+seeleclover@users.noreply.github.com",
+        "url": "https://github.com/seeleclover"
+    },
+    "homepage": "https://github.com/gdmuna/na-copilot",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gdmuna/na-copilot.git"
+    },
+    "engines": {
+        "node": "^18.0.0 || ^20.0.0"
+    },
+    "type": "module",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "eslint": "eslint . --fix",
+        "prettier": "prettier . --write",
+        "prepare": "husky install",
+        "lint:lint-staged": "lint-staged"
+    },
+    "lint-staged": {
+        "*.{js,cjs,mjs,jsx,ts,tsx,html}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{css,scss,less,styl}": [
+            "prettier --write"
+        ],
+        "*.{json,yml,yaml}": [
+            "prettier --write"
+        ],
+        "*.md": [
+            "prettier --write"
+        ]
+    },
+    "dependencies": {
+        "@chakra-ui/next-js": "^2.2.0",
+        "@chakra-ui/react": "^2.8.2",
+        "@emotion/react": "^11.13.0",
+        "@emotion/styled": "^11.13.0",
+        "@nextui-org/react": "^2.4.6",
+        "@prisma/adapter-pg": "^5.17.0",
+        "@prisma/client": "^5.17.0",
+        "bcrypt": "^5.1.1",
+        "config": "^3.3.12",
+        "dotenv": "^16.4.5",
+        "framer-motion": "^11.3.21",
+        "jose": "^5.6.3",
+        "jsonwebtoken": "^9.0.2",
+        "next": "14.2.5",
+        "pg": "^8.12.0",
+        "react": "^18",
+        "react-dom": "^18",
+        "uuid": "^10.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^8",
+        "eslint-config-next": "14.2.5",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-next": "^0.0.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "husky": "^9.1.4",
+        "lint-staged": "^15.2.8",
+        "postcss": "^8",
+        "prettier": "3.3.3",
+        "prisma": "^5.17.0",
+        "tailwindcss": "^3.4.1"
+    },
+    "prisma": {
+        "schema": "prisma/schema.prisma"
+    }
+}
