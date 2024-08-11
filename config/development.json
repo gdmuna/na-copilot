@@ -1,0 +1,7 @@
+{
+    "jwtConfig": {
+        "secret": "Z0hgUT9v2xMTpOD2b5P2",
+        "expiresIn": "12h",
+        "saltRounds": 10
+    }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "gavintest",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": " next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mapbox/node-pre-gyp": "^1.0.11",
+    "@nextui-org/react": "^2.4.6",
+    "@prisma/adapter-pg": "^5.17.0",
+    "@prisma/client": "^5.17.0",
+    "bcrypt": "^5.1.1",
+    "config": "^3.3.12",
+    "dotenv": "^16.4.5",
+    "framer-motion": "^11.3.21",
+    "jose": "^5.6.3",
+    "jsonwebtoken": "^9.0.2",
+    "next": "14.2.5",
+    "node-gyp": "^10.2.0",
+    "pg": "^8.12.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "prisma": "^5.17.0",
+    "tailwindcss": "^3.4.1"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  }
+}
