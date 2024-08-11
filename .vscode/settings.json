@@ -1,0 +1,11 @@
+{
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontFamily": "Cascadia Mono, 等线",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "files.autoSave": "afterDelay",
+    "files.eol": "\n",
+    "terminal.integrated.fontFamily": "Cascadia Mono",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+}
