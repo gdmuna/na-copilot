@@ -140,7 +140,7 @@ pnpm-lock.yaml
 /out/
 
 # prisma
-/prisma/
+prisma/migrations/
 
 # production
 /build
