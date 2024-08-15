@@ -13,10 +13,12 @@ const InterviewOptions = () => {
             </div>
             {/* 面试选项 */}
             <div className="flex flex-col w-full items-center gap-4">
-                <div className="bg-white w-[95%] h-[7rem] rounded-[8px] p-4" style={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
-                    <div className="flex flex-col h-full justify-between">
-                        <div className="flex w-full justify-between items-center">
-                            <p className="font-semibold text-[#4a4a4a] mt-[0.07rem]">网络协会招新面试</p>
+                <div className="bg-white w-[95%] rounded-[8px] p-4" style={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
+                    <div className="flex flex-col justify-between">
+                        <div className="flex w-full justify-between items-center mb-3">
+                            {/* 环节名称 */}
+                            <p className="font-semibold text-[#4a4a4a] mt-[0.1rem]">网络协会招新面试</p>
+                            {/* 环节状态提示 */}
                             {/* <div className='flex items-center justify-center bg-[#B1D1BC] w-[4.5rem] h-[1.6rem] rounded-full text-[0.9rem] text-[#4C9163] font-semibold'>
                                 <div className='bg-[#4C9163] w-[0.8rem] h-[0.8rem] mr-1 rounded-full'></div>
                                 <p>进行中</p>
@@ -30,6 +32,7 @@ const InterviewOptions = () => {
                                 <p>未开始</p>
                             </div>
                         </div>
+                        {/* 环节描述 */}
                         <p className="text-[0.9rem] text-[#4a4a4a]">2024-2025年度网络协会干事招新面试，期待你的加入</p>
                     </div>
                 </div>
