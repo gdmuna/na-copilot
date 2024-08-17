@@ -1,5 +1,7 @@
 // components/InterviewOptions.js
 import React from 'react';
+import { AddIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 const InterviewOptions = () => {
     return (
@@ -38,6 +40,11 @@ const InterviewOptions = () => {
                 </div>
             </div>
             {/* 新建面试按钮 */}
+            <Link href="/interview/createInterview">
+                <div className="fixed bottom-24 right-6 flex justify-center items-center bg-white rounded-full w-[3.5rem] h-[3.5rem]" style={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
+                    <AddIcon boxSize={6} />
+                </div>
+            </Link>
         </div>
     );
 };
