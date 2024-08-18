@@ -14,10 +14,6 @@ const CreateInterview = () => {
         setSessions(Array(sessionCount).fill({}));
     }, [sessionCount]);
 
-    useEffect(() => {
-        setCurrentSessionIndex(Math.min(currentSessionIndex, sessions.length - 1));
-    }, [sessions]);
-
     const updateSessionData = (index, data) => {
         const newSessions = [...sessions];
         newSessions[index] = data;
