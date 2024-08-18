@@ -1,6 +1,9 @@
 // components/createInterview/NodeInfo.js
 import React from 'react';
 import { useState } from 'react';
+import { NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from '@chakra-ui/react';
+import { Textarea } from '@nextui-org/react';
+import { Input } from '@nextui-org/react';
 
 const NodeInfo = ({ timesCount, setTimesCount, onTimesCount }) => {
     // 环节信息
@@ -21,18 +24,28 @@ const NodeInfo = ({ timesCount, setTimesCount, onTimesCount }) => {
             </div>
             {/* 节点信息 */}
             <form className="flex w-full gap-2">
-                <label htmlFor="nodeName">节点名称:</label>
-                <input id="nodeName" className="grow outline-none" maxLength={20} value={nodeName} onChange={(e) => setNodeName(e.target.value)} />
+                <label htmlFor="nodeName" className="grow-0 whitespace-nowrap">
+                    节点名称:
+                </label>
+                <Input variant="underlined" size="sm" type="text" value={nodeName} onChange={(e) => setNodeName(e.target.value)} />
             </form>
             <form className="flex w-full gap-2">
                 <label htmlFor="nodeDescription" className="grow-0 whitespace-nowrap">
                     节点描述:
                 </label>
-                <textarea id="nodeDescription" className="grow outline-none" maxLength={30} value={nodeDescription} onChange={(e) => setNodeDescription(e.target.value)} />
+                <Textarea variant="underlined" value={nodeDescription} onValueChange={(e) => setNodeDescription(e.target.value)} size="sm" />
             </form>
             <form className="flex w-full gap-2">
-                <label htmlFor="timesCount">场次数量:</label>
-                <input id="timesCount" className="grow outline-none" value={timesCount} onChange={changeTimesCount} />
+                <label htmlFor="timesCount" className="flex items-center">
+                    场次数量:
+                </label>
+                <NumberInput onChange={changeTimesCount} value={timesCount} defaultValue={1} min={1} size="sm" maxW={20}>
+                    <NumberInputField />
+                    <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                    </NumberInputStepper>
+                </NumberInput>
             </form>
             <div className="flex w-full gap-2 bg-[#FDDDB4] px-5 py-2 rounded-[5px] items-center">
                 <p className="mt-[0.1rem]">场次:</p>

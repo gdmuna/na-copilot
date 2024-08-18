@@ -3,11 +3,11 @@ import React from 'react';
 import Link from 'next/link';
 import Icon from '@/components/Icon';
 
-const TopNavbar = ({ title }) => {
+const TopNavbar = ({ title, route }) => {
     return (
         <div className="flex h-[4rem] w-full px-4 justify-between items-center bg-[#FFFFFF]" style={{ boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
             <div className="flex h-full items-center">
-                <Link href="/">
+                <Link href={route}>
                     <Icon type="back" extraclass="text-black-800 cursor-pointer text-[#4a4a4a]" size="20px" />
                 </Link>
             </div>
