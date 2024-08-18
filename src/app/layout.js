@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <html lang="en" className="light">
             <body className={inter.className}>
                 <Providers>
-                    <div className="overflow-hidden w-[100vw] h-[100vh] flex place-content-center ">{children}</div>
+                    <div className="overflow-hidden w-[100vw] h-[100vh] flex place-content-center  bg-[#F9F9F9]">{children}</div>
                 </Providers>
             </body>
         </html>
