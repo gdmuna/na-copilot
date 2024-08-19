@@ -1,0 +1,132 @@
+#面试实体模块
+@moduleUrl = /entity
+
+### 获取面试实体列表
+GET http://localhost:3000/api/interview/entity/list
+Content-Type: application/json
+# Authorization: Bearer {{ token }}
+
+### 获取面试实体信息POST
+GET http://localhost:3000/api/interview/entity/info?interviewId=01914757-f48b-7d04-98ea-b6cccf801f15
+Content-Type: application/json
+Authorization: Bearer your_jwt_token
+
+###创建面试实体
+post  http://localhost:3000/api/interview/entity/createInterview
+Content-Type: application/json
+Authorization: Bearer your_jwt_token
+
+{
+    "id": "",
+    "name": "",
+    "description": ""
+}
+
+###修改面试实体信息
+put  http://localhost:3000/api/interview/entity/modifyInterview
+Content-Type: application/json
+Authorization: Bearer your_jwt_token
+
+{
+    "id": "01915193-9e27-7eec-9a94-fdd49eb4073a",
+    "name": "acm",
+    "description": "xixixi"
+}
+
+###删除面试实体 
+Delete http://localhost:3000/api/interview/entity/delete
+Content-Type: application/json
+Authorization: Bearer your_jwt_token
+
+{
+    "id": ""
+}
+
+###创建环节实体 
+post http://localhost:3000/api/interview/entity/createRound
+Content-Type: application/json
+Authorization:Bearer your_jwt_token
+
+{
+    "id": "",
+    "interviewId": "",
+    "name": "",
+    "description": "",
+    "type": "",
+    "sort": 3
+}
+
+###创建节点实体信息
+post http://localhost:3000/api/interview/entity/createTopic
+Content-Type: application/json
+Authorization:Bearer your_jwt_token
+
+{
+    "roundId": "",
+    "topic":1,
+    "name":"",
+    "description":"",
+    "type":"aute"
+}
+
+###修改节点实体信息
+PUT http://localhost:3000/api/interview/entity/modifyTopic
+Content-Type: application/json
+Authorization:Bearer your_jwt_token
+
+{
+    "roundId": "01916b39-f517-7779-b295-81d8efe930dd",
+    "topic":1,
+    "name":"",
+    "description":"",
+    "type":""
+}
+
+
+###修改环节实体的信息
+put http://localhost:3000/api/interview/entity/modifyRound
+Content-Type:application/json
+Authorization:Bearer your_jwt_token
+
+{
+    "id": "",
+    "interviewId": "",
+    "name": "",
+    "description": "",
+    "type": "aute",
+    "sort": 2
+}
+
+###创建场次实体
+post http://localhost:3000/api/interview/entity/createSession
+Content-Type:application/json
+Authorization:Bearer your_jwt_token
+
+{
+    "session": 1,
+    "topic": 1,
+    "roundId": "019154bb-51e1-7007-b5f3-96b2ba159f3a",
+    "name": "宣传部面试",
+    "description": "网协宣传部面试咯",
+    "time":  "2024-10-29T01:47:17Z",
+    "place": "实验室"
+}
+
+###修改场次实体的信息
+put http://localhost:3000/api/interview/entity/modifySession
+Content-Type:application/json
+Authorization:Bearer your_jwt_token
+
+{
+    "session": ,
+    "topic": ,
+    "roundId": "",
+    "name": "",
+    "description": "",
+    "time":  "",
+    "place": ""
+}
+
+
+
+
