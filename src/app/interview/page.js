@@ -1,7 +1,7 @@
 'use client';
 import TopNavbar from '@/components/TopNavbar';
 import InterviewOptions from '@/app/interview/InterviewOptions/_page';
-import InterviewersPage from '@/app/interview/InterviewersPage/_page';
+import InterviewersPage from '@/app/interview/InterviewersPage/page';
 import { useState, useEffect } from 'react';
 import Icon from '@/components/Icon';
 import { Button } from '@nextui-org/react';
