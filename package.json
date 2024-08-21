@@ -55,6 +55,7 @@
         "@prisma/client": "^5.17.0",
         "bcrypt": "^5.1.1",
         "config": "^3.3.12",
+        "dayjs": "^1.11.12",
         "dotenv": "^16.4.5",
         "framer-motion": "^11.3.21",
         "jose": "^5.6.3",
