@@ -7,7 +7,7 @@ const entityDao = {
     },
     //获取面试实体信息
     getInterviewInfo: async (interviewId) => {
-        const interview = await prisma.interview.findUnique({
+        const interview = await prisma.interview.findUnquie({
             where: { id: interviewId },
             select: {
                 name: true,
@@ -162,7 +162,7 @@ const entityDao = {
         if (existingTopic) {
             return {
                 code: 'EXISTING_RECORD',
-                msg: 'The combination of roundId and topic already exists.'
+                msg: 'roundId 和 topic 的组合已经存在。'
             };
         } else {
             const createdTopic = await prisma.interview_topic.create({
@@ -176,20 +176,20 @@ const entityDao = {
             });
             return {
                 code: 'SUCCESS',
-                msg: 'Topic created successfully.',
+                msg: '节点创建成功',
                 data: createdTopic
             };
         }
     },
     //修改环节实体的信息
     modifyRound: async ({ interviewId, id, name, description, type, sort }) => {
-        const existingRound = await prisma.interview_round.findUnique({
+        const existingRound = await prisma.interview_round.findMany({
             where: {
                 id
             }
         });
         if (!existingRound) {
-            throw new Error(`InterviewRound with id ${id} does not exist`);
+            throw new Error(`ID 为 ${id} 的 InterviewRound 不存在`);
         }
         const modifyRound = await prisma.interview_round.update({
             where: { id },
@@ -222,6 +222,21 @@ const entityDao = {
     },
     //创建场次实体
     createSession: async ({ roundId, session, name, description, time, place, topic }) => {
+        const roundExists = await prisma.interview_round.findUnique({
+            where: { id: roundId }
+        });
+
+        const topicExists = await prisma.interview_topic.findUnique({
+            where: { round_id_topic: { round_id: roundId, topic } }
+        });
+
+        if (!roundExists) {
+            return { code: 1, msg: '无效的场次id' };
+        }
+
+        if (!topicExists) {
+            return { code: 1, msg: '无效的节点' };
+        }
         const createSession = await prisma.interview_session.create({
             data: {
                 round_id: roundId,
@@ -253,6 +268,58 @@ const entityDao = {
             }
         });
         return modifySession;
+    },
+    // 获取节点
+    getTopic: async ({ interviewId, roundId }) => {
+        const interview = await prisma.interview.findMany({
+            where: {
+                id: interviewId
+            }
+        });
+        if (!interview) {
+            return null;
+        }
+        const round = await prisma.interview_round.findMany({
+            where: {
+                id: roundId,
+                interview_id: interviewId
+            }
+        });
+        if (!round) {
+            return null;
+        }
+        const result = await prisma.interview_topic.findMany({
+            where: {
+                round_id: roundId
+            },
+            select: {
+                name: true,
+                topic: true,
+                description: true,
+                type: true
+            }
+        });
+        return result;
+    },
+    //获取轮次
+    getRound: async ({ interviewId }) => {
+        const rounds = await prisma.$queryRaw`
+        SELECT sort, name, description, type
+        FROM interview.interview_round
+        WHERE interview_id = ${interviewId}
+        ORDER BY sort ASC
+    `;
+        return rounds;
+    },
+    //获取场次
+    getSession: async ({ topic, roundId }) => {
+        const sessions = await prisma.$queryRaw`
+            SELECT session, name, description, time, place
+            FROM interview.interview_session
+            WHERE topic = ${Number(topic)} AND round_id = ${roundId}
+            ORDER BY time ASC
+        `;
+        return sessions;
     }
 };
 export default entityDao;
