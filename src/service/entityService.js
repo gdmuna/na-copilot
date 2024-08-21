@@ -64,6 +64,24 @@ const entityService = {
     modifySession: async ({ roundId, session, name, description, time, place, topic }) => {
         const result = await entityDao.modifySession({ roundId, session, name, description, time, place, topic });
         return result;
+    },
+
+    //获取场次信息
+    getSession: async ({ topic, roundId }) => {
+        const result = await entityDao.getSession({ topic, roundId });
+        return result;
+    },
+
+    //获取节点
+    getTopic: async ({ roundId, interviewId }) => {
+        const result = await entityDao.getTopic({ roundId, interviewId });
+        return result;
+    },
+
+    //获取轮次
+    getRound: async ({ interviewId }) => {
+        const result = await entityDao.getRound({ interviewId });
+        return result;
     }
 };
 

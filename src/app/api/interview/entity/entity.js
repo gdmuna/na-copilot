@@ -51,6 +51,24 @@ const entity = {
     //修改场次实体的信息
     modifySession(data) {
         return request.put(`${moduleUrl}/modifySession`, data);
+    },
+    //获取场次信息
+    getSession(data) {
+        return request.get(`${moduleUrl}/getSession`, {
+            params: { data }
+        });
+    },
+    //获取节点信息
+    getTopic(data) {
+        return request.get(`${moduleUrl}/getTopic`, {
+            params: { data }
+        });
+    },
+    //获取环节信息
+    getRound(data) {
+        return request.get(`${moduleUrl}/getRound`, {
+            params: { data }
+        });
     }
 };
 
