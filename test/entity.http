@@ -56,6 +56,20 @@ Authorization:Bearer your_jwt_token
     "sort": 3
 }
 
+###修改环节实体的信息
+put http://localhost:3000/api/interview/entity/modifyRound
+Content-Type:application/json
+Authorization:Bearer your_jwt_token
+
+{
+    "id": "",
+    "interviewId": "",
+    "name": "",
+    "description": "",
+    "type": "aute",
+    "sort": 2
+}
+
 ###创建节点实体信息
 post http://localhost:3000/api/interview/entity/createTopic
 Content-Type: application/json
@@ -82,32 +96,17 @@ Authorization:Bearer your_jwt_token
     "type":""
 }
 
-
-###修改环节实体的信息
-put http://localhost:3000/api/interview/entity/modifyRound
-Content-Type:application/json
-Authorization:Bearer your_jwt_token
-
-{
-    "id": "",
-    "interviewId": "",
-    "name": "",
-    "description": "",
-    "type": "aute",
-    "sort": 2
-}
-
 ###创建场次实体
 post http://localhost:3000/api/interview/entity/createSession
 Content-Type:application/json
 Authorization:Bearer your_jwt_token
 
 {
-    "session": 1,
+    "session": 3,
     "topic": 1,
     "roundId": "019154bb-51e1-7007-b5f3-96b2ba159f3a",
-    "name": "宣传部面试",
-    "description": "网协宣传部面试咯",
+    "name": "第一场",
+    "description": "acm宣传部第一场面试",
     "time":  "2024-10-29T01:47:17Z",
     "place": "实验室"
 }
@@ -127,6 +126,19 @@ Authorization:Bearer your_jwt_token
     "place": ""
 }
 
+###获取节点信息
+GET http://localhost:3000/api/interview/entity/getTopic?interviewId=01914757-f48b-7d04-98ea-b6cccf801f15&roundId=019154bb-51e1-7007-b5f3-96b2ba159f3a
+Content-Type: application/json
+Authorization: Bearer your_jwt_token
 
+###获取场次
+GET http://localhost:3000/api/interview/entity/getSession?roundId=019154bb-51e1-7007-b5f3-96b2ba159f3a&topic=1
+Content-Type: application/json
+Authorization: Bearer your_jwt_token
+
+###获取轮次
+GET http://localhost:3000/api/interview/entity/getRound?interviewId=01914757-f48b-7d04-98ea-b6cccf801f15
+Content-Type: application/json
+Authorization: Bearer your_jwt_token
 
 
