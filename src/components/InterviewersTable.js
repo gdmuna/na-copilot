@@ -7,7 +7,7 @@ const InterviewersTable = ({ data, selectedItems, handleSelectAll, handleSelectR
 
     // 行点击事件处理函数
     const handleRowClick = (userId) => {
-        window.location.href = `/interviewer/list?userId=${userId}`; //跳转详细页
+        window.location.href = `/interview/interviewUser?userId=${userId}`; //跳转详细页
     };
     return (
         <div className="flex-grow overflow-auto mb-2">
